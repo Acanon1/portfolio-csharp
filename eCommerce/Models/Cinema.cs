@@ -8,7 +8,7 @@ namespace eCommerce.Models
         public int Id { get; set; }
 
         public int Logo { get; set; }
-        public int Name { get; set; }
-        public int Description { get; set; }
+        public int Nombre { get; set; }
+        public int Descripcion { get; set; }
     }
 }

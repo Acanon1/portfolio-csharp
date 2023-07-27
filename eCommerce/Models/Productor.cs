@@ -1,12 +1,11 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace eCommerce.Models
 {
-    public class Actor
+    public class Productor
     {
         [Key]
-        public int ActorId { get; set; }
+        public int ProductorId { get; set; }
         public int FotoPerfilURL { get; set; }
 
         public string NombreCompleto { get; set; }

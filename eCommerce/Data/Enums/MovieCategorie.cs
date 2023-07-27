@@ -1,6 +1,6 @@
-﻿namespace eCommerce.Data
+﻿namespace eCommerce.Data.Enums
 {
-    public enum MovieCategorie
+    public enum CategoriaPelicula
 
     {
         Action = 1,
