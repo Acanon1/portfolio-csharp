@@ -10,5 +10,10 @@ namespace eCommerce.Models
 
         public string NombreCompleto { get; set; }
         public string Bio { get; set; }
+
+        //relaciones
+        public List<Pelicula> Peliculas { get; set; }
+
+
     }
 }

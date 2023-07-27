@@ -10,5 +10,8 @@ namespace eCommerce.Models
         public int Logo { get; set; }
         public int Nombre { get; set; }
         public int Descripcion { get; set; }
+
+        //relaciones
+        public List<Pelicula> Peliculas { get; set; }
     }
 }
