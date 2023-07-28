@@ -7,9 +7,9 @@ namespace eCommerce.Models
         [Key]
         public int Id { get; set; }
 
-        public int Logo { get; set; }
-        public int Nombre { get; set; }
-        public int Descripcion { get; set; }
+        public string Logo { get; set; }
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
 
         //relaciones
         public List<Pelicula> Peliculas { get; set; }

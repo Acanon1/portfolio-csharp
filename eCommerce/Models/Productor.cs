@@ -6,7 +6,7 @@ namespace eCommerce.Models
     {
         [Key]
         public int Id { get; set; }
-        public int FotoPerfilURL { get; set; }
+        public string FotoPerfilURL { get; set; }
 
         public string NombreCompleto { get; set; }
         public string Bio { get; set; }

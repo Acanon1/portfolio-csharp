@@ -9,11 +9,11 @@ namespace eCommerce.Models
     {
         [Key]
         public int Id { get; set; }
-        public int Nombre { get; set; }
-        public int Descripcion { get; set; }
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
 
-        public int Precio { get; set; }
-        public int ImageURL { get; set; }
+        public double Precio { get; set; }
+        public string FotoURL { get; set; }
         public DateTime fechaInicio { get; set; }
         public DateTime fechaFinal { get; set; }
         public CategoriaPelicula CategoriaPelicula { get; set; }
