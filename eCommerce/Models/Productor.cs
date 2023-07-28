@@ -5,7 +5,7 @@ namespace eCommerce.Models
     public class Productor
     {
         [Key]
-        public int ProductorId { get; set; }
+        public int Id { get; set; }
         public int FotoPerfilURL { get; set; }
 
         public string NombreCompleto { get; set; }
