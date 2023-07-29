@@ -2,13 +2,18 @@
 using eCommerce.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using System.Threading.Tasks;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Identity;
 
 namespace eCommerce.Data
 
 {
     public class AppDbInitializer
     {
-        public static void Seed(ApplicationBuilder applicationBuilder)
+        public static void Seed(IApplicationBuilder applicationBuilder)
         {
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
             {
@@ -17,7 +22,7 @@ namespace eCommerce.Data
                 context.Database.EnsureCreated();
 
                 //cinema
-                if(!context.Cinemas.Any())
+                if (!context.Cinemas.Any())
                 {
                     context.Cinemas.AddRange(new List<Cinema>()
                     {
@@ -44,7 +49,7 @@ namespace eCommerce.Data
                             Nombre = "Cinema 4",
                             Logo = "http://dotnethow.net/images/cinemas/cinema-4.jpeg",
                             Descripcion = "descripcion"
-                        },
+                        }
                     });
                     context.SaveChanges();
                 }
@@ -166,24 +171,168 @@ namespace eCommerce.Data
                         },
                         new Pelicula()
                         {
-                            Nombre = "Life",
+                            Nombre = "Ghost",
                             Descripcion = "Descripcion de pelicula4",
                             Precio = 39.50,
                             FotoURL = "http://dotnethow.net/images/movies/movie-4.jpeg",
                             fechaInicio = DateTime.Now,
                             fechaFinal = DateTime.Now.AddDays(7),
-                            CinemaId = 3,
-                            ProductorId = 3,
+                            CinemaId = 4,
+                            ProductorId = 4,
                             CategoriaPelicula = CategoriaPelicula.Drama,
+                        },
+                        new Pelicula()
+                        {
+                            Nombre = "Race",
+                            Descripcion = "Descripcion de pelicula5",
+                            Precio = 39.50,
+                            FotoURL = "http://dotnethow.net/images/movies/movie-6.jpeg",
+                            fechaInicio = DateTime.Now.AddDays(-10),
+                            fechaFinal = DateTime.Now.AddDays(-5),
+                            CinemaId = 1,
+                            ProductorId = 2,
+                            CategoriaPelicula = CategoriaPelicula.Documentary,
+                        },
+                        new Pelicula()
+                        {
+                            Nombre = "Scoob",
+                            Descripcion = "Descripcion de pelicula6",
+                            Precio = 39.50,
+                            FotoURL = "http://dotnethow.net/images/movies/movie-7.jpeg",
+                            fechaInicio = DateTime.Now.AddDays(-10),
+                            fechaFinal = DateTime.Now.AddDays(-2),
+                            CinemaId = 1,
+                            ProductorId = 3,
+                            CategoriaPelicula = CategoriaPelicula.Comedy
+                        },
+                        new Pelicula()
+                        {
+                            Nombre = "Cold Stones",
+                            Descripcion = "Descripcion de pelicula7",
+                            Precio = 39.50,
+                            FotoURL = "http://dotnethow.net/images/movies/movie-8.jpeg",
+                            fechaInicio = DateTime.Now.AddDays(3),
+                            fechaFinal = DateTime.Now.AddDays(20),
+                            CinemaId = 1,
+                            ProductorId = 5,
+                            CategoriaPelicula = CategoriaPelicula.Drama
                         }
                      });
+                    context.SaveChanges();
                 }
                 //actors_peliculas
                 if (!context.Actors_Peliculas.Any())
                 {
+                    context.Actors_Peliculas.AddRange(new List<Actor_Pelicula>()
+                    {
+                        new Actor_Pelicula()
+                        {
+                            ActorId = 1,
+                            PeliculaId = 1,
 
+                        },
+                        new Actor_Pelicula()
+                        {
+                            ActorId = 3,
+                            PeliculaId = 1,
+
+                        },
+                        new Actor_Pelicula()
+                        {
+                            ActorId = 1,
+                            PeliculaId = 2,
+
+                        },
+                        new Actor_Pelicula()
+                        {
+                            ActorId = 4,
+                            PeliculaId = 2,
+                            
+                        },
+                        new Actor_Pelicula()
+                        {
+                            ActorId = 1,
+                            PeliculaId = 3,
+
+                        },
+                        new Actor_Pelicula()
+                        {
+                            ActorId = 2,
+                            PeliculaId = 3,
+
+                        },
+                        new Actor_Pelicula()
+                        {
+                            ActorId = 5,
+                            PeliculaId = 3,
+
+                        },
+                        new Actor_Pelicula()
+                        {
+                            ActorId = 2,
+                            PeliculaId = 4,
+
+                        },
+                        new Actor_Pelicula()
+                        {
+                            ActorId = 3,
+                            PeliculaId = 4,
+
+                        },
+                        new Actor_Pelicula()
+                        {
+                            ActorId = 4,
+                            PeliculaId = 4,
+
+                        },
+                        new Actor_Pelicula()
+                        {
+                            ActorId = 2,
+                            PeliculaId = 5,
+
+                        },
+                        new Actor_Pelicula()
+                        {
+                            ActorId = 3,
+                            PeliculaId = 5,
+
+                        },
+                        new Actor_Pelicula()
+                        {
+                            ActorId = 4,
+                            PeliculaId = 5,
+
+                        },
+                        new Actor_Pelicula()
+                        {
+                            ActorId = 5,
+                            PeliculaId = 5,
+
+                        },
+                        new Actor_Pelicula()
+                        {
+                            ActorId = 3,
+                            PeliculaId = 6,
+
+                        },
+                        new Actor_Pelicula()
+                        {
+                            ActorId = 4,
+                            PeliculaId = 6,
+
+                        },
+                        new Actor_Pelicula()
+                        {
+                            ActorId = 5,
+                            PeliculaId = 6,
+
+                        }
+                    });
+                    context.SaveChanges();
                 }
             }
+
         }
+
     }
 }

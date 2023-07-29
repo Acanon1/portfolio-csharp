@@ -13,6 +13,7 @@ namespace eCommerce.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Actor_Pelicula>().HasKey(am => new {
+
             am.ActorId,
             am.PeliculaId
             });
