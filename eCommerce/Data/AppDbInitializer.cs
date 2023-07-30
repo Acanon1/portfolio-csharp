@@ -58,12 +58,7 @@ namespace eCommerce.Data
                 {
                     context.Actors.AddRange(new List<Actor>()
                     {
-                        new Actor()
-                        {
-                            NombreCompleto = "Actor 1",
-                            Bio = "This is the Bio of the first actor",
-                            FotoPerfilURL = "http://dotnethow.net/images/actors/actor-1.jpeg"
-                        },
+
                         new Actor()
                         {
                             NombreCompleto = "Actor 1",

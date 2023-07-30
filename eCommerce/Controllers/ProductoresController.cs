@@ -15,7 +15,7 @@ namespace eCommerce.Controllers
         public async Task<IActionResult> Index()
         {
             var allProductores =await _context.Productors.ToListAsync();
-            return View();
+            return View(allProductores);
         }
     }
 }

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Pelicula>
+
+@{
+	ViewData["titulo"] = "lista de peliculas";
+}
+
+<div class="row">
+	@foreach (var item in Model)
+	{
+        <div class="col-md-4 col-xs-6 border-primary mb-3">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-white bg-info">
+                            <p class="card-text">
+                                <h5 class="card-title">
+                                   Nombre de ejemplo pelicula
+                                        <a class="text-white float-right" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                                   
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="@item.FotoURL" width="100%" alt="@item.Nombre">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <p class="card-text">@item.Descripcion</p>
+                            <p class="card-text"><b>Cinema: </b>@item.Cinema.Nombre</p>
+                            <p class="card-text"><b>Categoria: </b>@item.CategoriaPelicula</p>
+                            <p class="card-text"><b>inicio: </b>@item.fechaInicio.ToString("dd MMM yy")</p>
+                            <p class="card-text"><b>fin: </b>@item.fechaFinal.ToString("dd MMM yy")</p>
+                            <p class="card-text ">
+                                <b>Status: </b>
+                                @if(DateTime.Now >= item.fechaInicio &&  DateTime.Now <= item.fechaFinal)
+                                {
+                                    <span class="badge bg-success text-white">DISPONIBLE</span>
+                                }else if (DateTime.Now > item.fechaFinal)
+                                {
+                                    <span class="badge bg-danger text-white">EXPIRADO</span>
+                                }else
+                                {
+                                    <span class="badge bg-primary text-white">PROXIMAMENTE</span>
+                                }
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-footer ">
+                            <p class="card-text">
+                                <a class="btn btn-outline-primary float-right">
+                                    <i class="bi bi-eye-fill"></i> Show Details
+                                </a>
+                                <a class="btn btn-success text-white">
+                                    <i class="bi bi-cart-plus"></i> agregar (Precio @item.Precio.ToString("C"))
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
