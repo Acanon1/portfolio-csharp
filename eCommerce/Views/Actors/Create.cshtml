@@ -1,0 +1,56 @@
+﻿@model Actor
+
+@{
+	ViewData["Title"] = "agregar nuevo actor";
+}
+<div class="row  text">
+	<div class="col-md-8 offset-2">
+		<p>
+		<h1>Agregar un nuevo actor</h1>
+
+		</p>
+		<div class="row">
+			<div class="col-md-8 offset-2">
+				<form asp-action="Create">
+					<div asp-validation-summary="ModelOnly" class="text-danger">
+
+					</div>
+				</form>
+				<div class="form-group text-center">
+					<img id="fotoperfilPosible"/>
+				</div>
+				<div class="form-group">
+					<label asp-for="FotoPerfilURL" class="control-label">
+					</label>
+					<input asp-for="FotoPerfilURL" class="form-control"/>
+					<span asp-validation-for="FotoPerfilURL" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="NombreCompleto" class="control-label">
+					</label>
+					<input asp-for="NombreCompleto" class="form-control" />
+					<span asp-validation-for="NombreCompleto" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Bio" class="control-label">
+					</label>
+					<input asp-for="Bio" class="form-control" />
+					<span asp-validation-for="Bio" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<input  type="submit" value="create" class="btn btn-outline-success float-right"/>
+					<a class="btn btn-outline-scondary" asp-action="Index"> </a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts{
+	<script>
+		$("#FotoPerfilUrl").on("change", function(){
+			var output = document.getElementById('fotoperfilPosible');
+			output.src= $(this).val();
+		})
+	</script>
+}

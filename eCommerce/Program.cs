@@ -10,10 +10,19 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using eCommerce.Models;
+using eCommerce.Data.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>(options => 
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
+
+
+//configuraciones
+builder.Services.AddScoped < IActoresService, ActoresService>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+
 
 
 builder.Services.AddMemoryCache();

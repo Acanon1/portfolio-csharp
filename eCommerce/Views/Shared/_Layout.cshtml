@@ -13,8 +13,8 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">eCommerce</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                <a class="navbar-brand"  asp-controller="Peliculas" asp-action="Index">eCommerce</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -25,11 +25,22 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="button"
-                            aria-haspopup="true" aria-expanded="false"></a>
-                            <i class="bi bi-gear"></i>
-                        </li>
+                            aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-gear"></i> Opciones
+                            </a>
 
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-controller="Cinemas" asp-action="Index"><i class="bi bi-camera-reels"></i> Cinemas</a>
+                                <a class="dropdown-item" asp-controller="Productores" asp-action="Index"><i class="bi bi-headset"></i> Productores</a>
+                                <a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i> Actores</a>
+                            </div>
+                        </li>
                     </ul>
+
+                    <form class="form-inline my-2 my-lg-0" asp-controller="Peliculas" asp-action="Filtrar" style="padding-right: 25px;">
+                        <input name="searchString" type="text" class="form-control" placeholder="buscar una pelicula" />
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" ><i class="bi bi-search"></i></button>
+                    </form>
                 </div>
             </div>
         </nav>
@@ -42,7 +53,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - eCommerce - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2023 - eCommerce
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
