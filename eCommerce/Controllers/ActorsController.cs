@@ -1,5 +1,6 @@
 ﻿using eCommerce.Data;
 using eCommerce.Data.Services;
+using eCommerce.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eCommerce.Controllers
@@ -21,6 +22,16 @@ namespace eCommerce.Controllers
         public async Task<IActionResult> Create()
         {
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("Nombre completo, foto de perfil, Bio")]Actor actor)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(actor);
+            }
+            _service.Add(actor);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
