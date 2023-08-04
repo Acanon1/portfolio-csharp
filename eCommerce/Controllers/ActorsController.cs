@@ -15,23 +15,30 @@ namespace eCommerce.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var data = await _service.Getall();
+            var data = await _service.GetallAsync();
             return View(data);
         }
         //crear actores
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Nombre completo, foto de perfil, Bio")]Actor actor)
+        public async Task<IActionResult> Create([Bind("NombreCompleto,FotoPerfilURL, Bio")]Actor actor)
         {
             if(!ModelState.IsValid)
             {
                 return View(actor);
             }
-            _service.Add(actor);
+            _service.AddAsync(actor);
             return RedirectToAction(nameof(Index));
+        }
+        public async Task<IActionResult> Details(int id)
+        {
+            var actorDetails = _service.GetByIdAsync(id);
+            if (actorDetails == null) return View("empty");
+            return View(actorDetails);
+
         }
     }
 }
