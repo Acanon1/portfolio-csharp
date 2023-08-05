@@ -23,21 +23,23 @@ namespace eCommerce.Data.Services
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Actor>> Getall()
+        public async Task<IEnumerable<Actor>> GetallAsync()
         {
             var result = await _context.Actors.ToListAsync();
             return result;
         }
-
-        public async  Task<Actor> GetByIdAsync(int id)
+            
+        public async Task<Actor> GetByIdAsync(int id)
         {
             var result = await _context.Actors.FirstOrDefaultAsync(n => n.Id == id);
             return result;
-        }
+        }   
 
-        public Actor Update(int id, Actor newActor)
+        public async Task<Actor> UpdateAsync(int id, Actor newActor)
         {
-            throw new NotImplementedException();
+            _context.Update(newActor);
+            await _context.SaveChangesAsync();
+            return newActor;
         }
     }
 }
