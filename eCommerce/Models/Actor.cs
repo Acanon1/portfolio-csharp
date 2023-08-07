@@ -1,9 +1,10 @@
-﻿using System;
+﻿using eCommerce.Data.Base;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace eCommerce.Models
 {
-    public class Actor
+    public class Actor: IEntityBase
     {
         [Key]
         public int Id { get; set; }

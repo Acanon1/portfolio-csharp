@@ -1,43 +1,47 @@
 ﻿@model Actor
 
 @{
-	ViewData["Title"] = "actualizar nuevo actor";
+	ViewData["Title"] = "borrar actor ";
 }
 <div class="row  text">
 	<div class="col-md-8 offset-2">
 		<p>
-		<h1>Actualizar actor</h1>
+			<h1>Confirmacion de eliminacion para @Model.NombreCompleto</h1>
 
 		</p>
 		<div class="row">
 			<div class="col-md-8 offset-2">
-				<form asp-action="Edit">
-					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			
+				
 					<div class="form-group text-center">
-						<img id="fotoperfilPosible" class="border-info rounded-circle" style="max-width: 150px" />
+						<img class="border-info rounded-circle" style="max-width: 150px" id="fotoperfilPosible" />
 					</div>
 					<div class="form-group">
 						<label asp-for="FotoPerfilURL" class="control-label"></label>
-						<input asp-for="FotoPerfilURL" class="form-control" />
+						<input asp-for="FotoPerfilURL" class="form-control" readonly />
 						<span asp-validation-for="FotoPerfilURL" class="text-danger"></span>
 					</div>
 					<div class="form-group">
 						<label asp-for="NombreCompleto" class="control-label">
 						</label>
-						<input asp-for="NombreCompleto" class="form-control" />
+						<input asp-for="NombreCompleto" class="form-control" readonly />
 						<span asp-validation-for="NombreCompleto" class="text-danger"></span>
 					</div>
 					<div class="form-group">
 						<label asp-for="Bio" class="control-label">
 						</label>
-						<input asp-for="Bio" class="form-control" />
+						<input asp-for="Bio" class="form-control" readonly/>
 						<span asp-validation-for="Bio" class="text-danger"></span>
 					</div>
 					<div class="form-group">
-						<input type="submit" value="Actualizar" class="btn btn-outline-success float-right" />
-						<a class="btn btn-outline-scondary" asp-action="Index">Mostrar todos </a>
+						<form action="Delete">
+							<input type="hidden" asp-for="Id" />
+							<input type="submit" value="confirm" class="btn btn-danger float-right"/>
+						</form>
+				
+						<a class="btn btn-outline-secondary" asp-action="Index">Mostrar todos </a>
 					</div>
-				</form>
+			
 			</div>
 		</div>
 	</div>
@@ -45,14 +49,10 @@
 
 @section Scripts{
 	<script>
-		$(document).ready(function (){
+		$(document).ready(function () {
 			var output = document.getElementById('fotoperfilPosible')
 			output.src = $("#FotoPerfilURL").val();
 		})
 
-		$("#FotoPerfilURL").on("change", function () {
-			var output = document.getElementById('fotoperfilPosible');
-			output.src= $(this).val();
-		})
 	</script>
 }

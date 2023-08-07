@@ -11,7 +11,7 @@ namespace eCommerce.Controllers
 
         public ActorsController(IActoresService service)
         {
-               _service = service;
+            _service = service;
         }
         public async Task<IActionResult> Index()
         {
@@ -24,9 +24,9 @@ namespace eCommerce.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("NombreCompleto,FotoPerfilURL, Bio")]Actor actor)
+        public async Task<IActionResult> Create([Bind("NombreCompleto,FotoPerfilURL, Bio")] Actor actor)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(actor);
             }
@@ -39,7 +39,8 @@ namespace eCommerce.Controllers
             if (actorDetails == null) return View("NotFound");
             return View(actorDetails);
 
-        }
+        } 
+        //get actors edit
 		public async Task<IActionResult> Edit(int id)
 		{
 			var actorDetails = await _service.GetByIdAsync(id);
@@ -56,6 +57,25 @@ namespace eCommerce.Controllers
 			}
 			await _service.UpdateAsync(id, actor);
 			return RedirectToAction(nameof(Index));
+		}
+
+       //get actors delete
+		public async Task<IActionResult> Delete(int id)
+		{
+			var actorDetails = await _service.GetByIdAsync(id);
+			if (actorDetails == null) return View("NotFound");
+
+			return View(actorDetails);
+		}
+		[HttpPost, ActionName("Delete")]
+		public async Task<IActionResult> DeleteConfirmed(int id)
+		{
+            var actorDetails = await _service.GetByIdAsync(id);
+            if (actorDetails == null) return View("NotFound");
+
+            await _service.DeleteAsync(id);
+                
+            return RedirectToAction(nameof(Index));
 		}
 	}
 }
