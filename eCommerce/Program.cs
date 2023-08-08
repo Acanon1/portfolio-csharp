@@ -20,6 +20,7 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
 
 //configuraciones
 builder.Services.AddScoped < IActoresService, ActoresService>();
+builder.Services.AddScoped<IProductoresService, ProductoresService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
