@@ -40,5 +40,27 @@ namespace eCommerce.Controllers
             await _service.AddAsync(productor);
             return RedirectToAction(nameof(Index));
         }
-    }
+		//get productores edit
+		public async Task<IActionResult> Edit(int id)
+		{
+            var productorDetails = await _service.GetByIdAsync(id);
+            if (productorDetails == null) return View("NotFound");
+			return View(productorDetails);
+		}
+		[HttpPost]
+		public async Task<ActionResult> Edit(int id, [Bind("Id,FotoPerfilURL,NombreCompleto,Bio")] Productor productor)
+		{
+			if (!ModelState.IsValid) return View(productor);
+
+            if (id == productor.Id)
+            {
+				await _service.UpdateAsync(id, productor);
+				return RedirectToAction(nameof(Index));
+			}
+			return View(productor);
+			
+		}
+
+
+	}
 }
